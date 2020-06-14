@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="edit.css">
+    <title></title>
+ </head>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-6" >
+      <h1>Editing Book </h1>
+        <%= render 'layouts/error_messages', book: @book %>
+    </div>
+   </div>
+    <%= form_for(@book) do |f| %>
+
+       <div class="row">
+       	<div class="col-xs-12" style="background-color: orange;">
+         <h4>Title</h4>
+          <%= f.text_field :title %>
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-xs-12" style="background-color: orange;">
+           <h4>Opinions</h4>
+           <%= f.text_area :body %>
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-xs-12" style="background-color: orange;">
+           <%= f.submit 'Update Book' %>
+        </div>
+       </div>
+       <% end %>
+       <%= link_to "Show", book_path(@book) %>
+       |
+       <%= link_to "Back", books_path %>
+       <end>
+  </div>

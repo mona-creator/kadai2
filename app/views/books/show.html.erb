@@ -1,0 +1,36 @@
+<div class="container">
+<%= flash[:notice] %>
+	<div class="row">
+  <%= render 'books/lists', book:@book,user:@user,book_new:@book_new %>
+   <div class="col-xs-9">
+      <h2>Book detail</h2>
+     <table class="table">
+       <thead>
+      <tr>
+       <th></th>
+       <th></th>
+       <th></th>
+      </tr>
+      </thead>
+		    <tr>
+          <th>
+            <%= link_to user_path(@user) do %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb"%>
+            <%=@user.name %>
+        <% end %>
+          </th>
+			    <th><%= @book.title %></th>
+			    <th><%= @book.body %></th>
+         <% if @book.user == current_user %>
+          <%= link_to "", book_path(@book), method: :delete %>
+          <th><%= link_to "Edit", edit_book_path,class:"btn btn-success" %></th>
+         <% end %>
+         <% if @book.user == current_user %>
+          <%= link_to "", book_path(@book), method: :delete %>
+          <th><%= link_to "Destroy", book_path(@book),class:"btn btn-danger",method: :delete,data: {confirm: 'Are you sure?' }%></th>
+         <% end %>
+		    </tr>
+     </table>
+  </div>
+ </div>
+</div>
